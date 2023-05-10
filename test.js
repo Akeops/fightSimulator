@@ -25,6 +25,27 @@ class Personnage {
     }
 }
 
+class Magicien extends Personnage{
+    constructor(pseudo, classe, sante, attaque, niveau){
+        super(pseudo, classe  = "Magicien", sante = 170, attaque = 90, niveau);
+    }
+
+    attaquer(personnage){
+        personnage.santé -= this.attaque;
+        console.log(this.pseudo + " attaque " 
+        + personnage.pseudo + " en lançant un sort " + this.degats + " dégats!");
+        this.verifierSante();
+    }
+
+    coupSpecial(personnage){
+        personnage.santé -= this.attaque * 5;
+        console.log(this.pseudo + " attaque avec son coup spécial puissance des arcanes " 
+        + personnage.pseudo + (this.attaque * 5) + " dégats!");
+        this.evoluer();
+        this.verifierSante();
+    }
+}
+
 
 
 
