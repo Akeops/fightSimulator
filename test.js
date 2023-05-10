@@ -31,14 +31,14 @@ class Magicien extends Personnage{
     }
 
     attaquer(personnage){
-        personnage.santé -= this.attaque;
+        personnage.sante -= this.attaque;
         console.log(this.pseudo + " attaque " 
         + personnage.pseudo + " en lançant un sort " + this.degats + " dégats!");
         this.verifierSante();
     }
 
     coupSpecial(personnage){
-        personnage.santé -= this.attaque * 5;
+        personnage.sante -= this.attaque * 5;
         console.log(this.pseudo + " attaque avec son coup spécial puissance des arcanes " 
         + personnage.pseudo + (this.attaque * 5) + " dégats!");
         this.evoluer();
@@ -48,9 +48,28 @@ class Magicien extends Personnage{
 
 class Guerrier extends Personnage{
     constructor(pseudo, classe, sante, attaque, niveau){
-        super(pseudo, classe  = "Magicien", sante = 170, attaque = 90, niveau);
+        super(pseudo, classe  = "Guerrier", sante = 350, attaque = 50, niveau);
+    }
+
+    attaquer(personnage){
+        personnage.santé -= this.attaque;
+        console.log(this.pseudo + " attaque " + personnage.pseudo 
+        + " avec son épée " + this.degats + " dégats!");
+        this.evoluer();
+        this.verifierSante();
+    }
+
+    coupSpecial(personnage){
+        personnage.sante -= this.attaque * 5;
+        console.log(this.pseudo 
+            + " attaque avec son coup spécial haches de guerre " 
+            + personnage.pseudo + (this.degats * 5) + " dégats!");
+        this.evoluer();
+        this.verifierSante();
     }
 }
+
+
 
 
 
