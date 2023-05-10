@@ -46,6 +46,12 @@ class Magicien extends Personnage{
     }
 }
 
+class Guerrier extends Personnage{
+    constructor(pseudo, classe, sante, attaque, niveau){
+        super(pseudo, classe  = "Magicien", sante = 170, attaque = 90, niveau);
+    }
+}
+
 
 
 
