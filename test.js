@@ -1,10 +1,10 @@
 class Personnage {
-    constructor(pseudo, classe, sante, attaque, niveau = 1){
-        this.pseudo = pseudo;
-        this.classe = classe;
-        this.sante = sante;
+    constructor(pseudo, classe, sante, attaque){
+        this.pseudo  = pseudo;
+        this.classe  = classe;
+        this.sante   = sante;
         this.attaque = attaque;
-        this.niveau = niveau;
+        this.niveau  =  1;
     }
 
     get informations() {
@@ -19,22 +19,22 @@ class Personnage {
     }
     verifierSante(){
         if(this.sante <= 0){
-            this.sante = 0;
+            this.sante == 0;
             console.log(this.pseudo + " a perdu !");
         }
     }
 }
 
 class Magicien extends Personnage{
-    constructor(pseudo, classe, sante, attaque, niveau){
-        super(pseudo, classe  = "Magicien", sante = 170, attaque = 90, niveau);
+    constructor(pseudo){
+        super(pseudo, "Magicien", 170, 90);
     }
 
     attaquer(personnage){
         personnage.sante -= this.attaque;
         console.log(this.pseudo + " attaque " 
         + personnage.pseudo + " en lançant un sort qui fait " + this.attaque + " dégats!");
-        this.verifierSante();
+        personnage.verifierSante();
     }
 
     coupSpecial(personnage){
@@ -42,13 +42,13 @@ class Magicien extends Personnage{
         console.log(this.pseudo + " attaque avec son coup spécial puissance des arcanes sur " 
         + personnage.pseudo + " " + (this.attaque * 5) + " dégats!");
         this.evoluer();
-        this.verifierSante();
+        personnage.verifierSante();
     }
 }
 
 class Guerrier extends Personnage{
-    constructor(pseudo, classe, sante, attaque, niveau){
-        super(pseudo, classe  = "Guerrier", sante = 350, attaque = 50, niveau);
+    constructor(pseudo){
+        super(pseudo, "Guerrier", 350, 50);
     }
 
     attaquer(personnage){
@@ -56,7 +56,7 @@ class Guerrier extends Personnage{
         console.log(this.pseudo + " attaque " + personnage.pseudo 
         + " avec son épée " + this.attaque + " dégats!");
         this.evoluer();
-        this.verifierSante();
+        personnage.verifierSante();
     }
 
     coupSpecial(personnage){
@@ -65,12 +65,13 @@ class Guerrier extends Personnage{
             + " attaque avec son coup spécial haches de guerre " 
             + personnage.pseudo + (this.attaque * 5) + " dégats!");
         this.evoluer();
-        this.verifierSante();
+        personnage.verifierSante();
     }
 }
 
 var gandalf = new Magicien("Gandalf");
-var thor    = new Guerrier("Thor"); 
+var thor    = new Guerrier("Thor");
+
 console.log(thor.informations);
 console.log(gandalf.informations);
 gandalf.attaquer(thor);
